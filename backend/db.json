@@ -11,7 +11,7 @@
       "id": 2,
       "descricao": "Estudar sobre acessibilidade",
       "categoria": "Trabalho",
-      "statusFinalizado": false,
+      "statusFinalizado": true,
       "prioridade": "Normal"
     },
     {
@@ -33,6 +33,13 @@
       "descricao": "Ler",
       "statusFinalizado": false,
       "categoria": "Estudos",
+      "prioridade": "Alta"
+    },
+    {
+      "id": 7,
+      "descricao": "Lavar louças",
+      "statusFinalizado": false,
+      "categoria": "Trabalho",
       "prioridade": "Alta"
     }
   ]
