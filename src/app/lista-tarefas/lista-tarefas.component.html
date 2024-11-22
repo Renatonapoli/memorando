@@ -6,7 +6,8 @@
   </div>
   <form class="formulario ff-prompt"
     [formGroup]="formulario"
-    *ngIf="formAberto">
+    *ngIf="formAberto"
+    @shownState>
     <label for="descricao">Descrição da tarefa</label>
     <input required
       type="text"
@@ -87,7 +88,7 @@
         <p class="status-tarefa">
           <button
             [ngClass]="(tarefa.statusFinalizado == true) ? 'icone-checked' : 'icone-unchecked'"
-            (click)="finalizarTarefa(tarefa.id);">
+            (click)="finalizarTarefa(tarefa.id);" [@checkButton]="(tarefa.id === id) ? 'ckecked': 'unckecked'">
           </button>
         </p>
       </div>
