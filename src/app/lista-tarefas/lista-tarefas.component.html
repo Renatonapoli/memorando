@@ -4,10 +4,11 @@
       Criar nova tarefa
     </button>
   </div>
-  <form class="formulario ff-prompt"
+  <form @shownState
+    class="formulario ff-prompt"
     [formGroup]="formulario"
     *ngIf="formAberto"
-    @shownState>
+    >
     <label for="descricao">Descrição da tarefa</label>
     <input required
       type="text"
@@ -49,6 +50,8 @@
     </app-mensagem>
     <div class="botoes-form">
       <button
+        [@formButton]="formulario.valid ? 'valid' : 'invalid'"
+        id="botao-salvar"
         (click)="salvarTarefa()"
         class="botao-form"
         [ngClass]="habilitarBotao()"
@@ -69,10 +72,17 @@
     <img src="assets/imagens/ilustracao-Tarefas.png"
         alt="Ilustração de um ambiente com mesa, computador, quadro e um vaso com planta">
   </div>
-  <div *ngIf="listaTarefas.length > 0, else semTarefas">
+  <div class="busca">
+    <p class="ff-prompt">Procurando o que fazer</p>
+    <input id="campo-busca" type="search" placeholder="Busque por uma tarefa"
+    [(ngModel)]="campoBusca"
+    (keyup)="filtarTarefaPorDescricao(campoBusca)">
+  </div>
+  <div *ngIf="tarefasFiltradas.length > 0, else semTarefas">
     <div
+      @filterAnimation
       class="lista-tarefas card-{{ tarefa.categoria }}"
-      *ngFor="let tarefa of listaTarefas; let i = index"
+      *ngFor="let tarefa of tarefasFiltradas; let i = index "
       (mouseover)="indexTarefa = i"
       [@highlightedState]="indexTarefa === i ? 'highlighted' : 'default'">
       <div class="info-card">
