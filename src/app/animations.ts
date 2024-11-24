@@ -151,12 +151,12 @@ export const listStateTrigger = trigger('listState', [
           style({
             opacity: 1,
             transform: 'translateX(15%)',
-            offsets: 0.4
+            offset: 0.4
           }),
           style({
             opacity: 1,
             transform: 'translateX(0)',
-            offsets: 1
+            offset: 1
           }),
         ]))
       ]),

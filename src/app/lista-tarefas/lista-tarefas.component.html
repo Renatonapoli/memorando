@@ -5,12 +5,11 @@
     </button>
   </div>
   <form @shownState
-    [@formButton]="formulario.valid ? 'valid' : 'invalid'"
     [@shakeAnimation]="formulario.value"
+    [@formButton]="formulario.valid ? 'valid' : 'invalid'"
     class="formulario ff-prompt"
     [formGroup]="formulario"
-    *ngIf="formAberto"
-    >
+    *ngIf="formAberto">
     <label for="descricao">Descrição da tarefa</label>
     <input required
       type="text"
@@ -74,16 +73,19 @@
         alt="Ilustração de um ambiente com mesa, computador, quadro e um vaso com planta">
   </div>
   <div class="busca">
-    <p class="ff-prompt">Procurando o que fazer</p>
-    <input id="campo-busca" type="search" placeholder="Busque por uma tarefa"
-    [(ngModel)]="campoBusca"
-    (keyup)="filtarTarefaPorDescricao(campoBusca)">
+    <p class="ff-prompt">Procurando o que fazer?</p>
+    <input
+      id="campo-busca" type="search"
+      placeholder="Busque por uma tarefa"
+      [(ngModel)]="campoBusca"
+      (keyup)="filtarTarefaPorDescricao(campoBusca)"
+  >
   </div>
-  <div  @listState *ngIf="tarefasFiltradas.length > 0, else semTarefas">
+  <div @listState *ngIf="tarefasFiltradas.length > 0, else semTarefas">
     <div
       @filterAnimation
       class="lista-tarefas card-{{ tarefa.categoria }}"
-      *ngFor="let tarefa of tarefasFiltradas; let i = index "
+      *ngFor="let tarefa of tarefasFiltradas; let i = index"
       (mouseover)="indexTarefa = i"
       [@highlightedState]="indexTarefa === i ? 'highlighted' : 'default'">
       <div class="info-card">
@@ -99,7 +101,9 @@
         <p class="status-tarefa">
           <button
             [ngClass]="(tarefa.statusFinalizado == true) ? 'icone-checked' : 'icone-unchecked'"
-            (click)="finalizarTarefa(tarefa);" [@checkButton]="(tarefa.id === id && estadoBotao)">
+            (click)="finalizarTarefa(tarefa)"
+            [@checkButton]="tarefa.id === id && estadoBotao"
+            >
           </button>
         </p>
       </div>
@@ -116,7 +120,7 @@
             <img src="assets/icones/icone-editar.png" alt="Ícone de editar">
           </button>
           <button
-            (click)="excluirTarefa(tarefa)"
+            (click)="excluirTarefa(tarefa.id)"
             class="botao-deletar">
             <img src="assets/icones/icone-excluir.png" alt="Ícone de excluir">
           </button>
@@ -125,7 +129,7 @@
     </div>
   </div>
 </section>
-<ng-template #semTarefas>
-  <p @mensagemListaVazia class="ng-template ff-prompt">Olá! Ainda não há tarefas por aqui! :)</p>
-</ng-template>
 
+<ng-template #semTarefas >
+  <p @mensagemListaVazia id="mensagem-lista-vazia" class="ng-template ff-prompt">Olá! Ainda não há tarefas por aqui! :)</p>
+</ng-template>

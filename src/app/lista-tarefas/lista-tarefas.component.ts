@@ -25,6 +25,7 @@ export class ListaTarefasComponent implements OnInit {
   tarefasFiltradas: Tarefa[] = []
   tarefaSubscription: Subscription = new Subscription()
   estadoBotao: string = 'unchecked'
+  mensagemLista:boolean = false
 
   formulario: FormGroup = this.fomBuilder.group({
     id: [0],
@@ -87,9 +88,9 @@ export class ListaTarefasComponent implements OnInit {
     }
   }
 
-  excluirTarefa(tarefa: Tarefa) {
-    if(tarefa.id) {
-      this.service.excluir(tarefa.id)
+  excluirTarefa(id: number) {
+    if(id) {
+      this.service.excluir(id)
     }
   }
 
