@@ -31,14 +31,14 @@
     {
       "id": 6,
       "descricao": "Ler",
-      "statusFinalizado": true,
+      "statusFinalizado": false,
       "categoria": "Estudos",
       "prioridade": "Alta"
     },
     {
       "id": 7,
       "descricao": "Lavar louças",
-      "statusFinalizado": true,
+      "statusFinalizado": false,
       "categoria": "Trabalho",
       "prioridade": "Alta"
     }

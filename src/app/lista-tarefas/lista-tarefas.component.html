@@ -79,7 +79,7 @@
     [(ngModel)]="campoBusca"
     (keyup)="filtarTarefaPorDescricao(campoBusca)">
   </div>
-  <div *ngIf="tarefasFiltradas.length > 0, else semTarefas">
+  <div  @listState *ngIf="tarefasFiltradas.length > 0, else semTarefas">
     <div
       @filterAnimation
       class="lista-tarefas card-{{ tarefa.categoria }}"
